@@ -1,0 +1,14 @@
+﻿
+using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace PeopleActzAndPostz.Domain.Models.DbEntities.IdentityEntities
+{
+    public class AppRole:IdentityRole<string>
+    {
+    }
+}
