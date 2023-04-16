@@ -1,17 +1,4 @@
-﻿    using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using PeopleActzAndPostz.Application.Contracts;
-using PeopleActzAndPostz.Application.UserClaimService;
-using PeopleActzAndPostz.Domain.Common.Exceptions;
-using PeopleActzAndPostz.Domain.Models.DbEntities;
-using PeopleActzAndPostz.Domain.Models.DbEntities.IdentityEntities;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.Comment;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.AppUser;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.Comment;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.Post;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.UnitOfWorks;
-
-namespace PeopleActzAndPostz.Application.Implementations
+﻿namespace PeopleActzAndPostz.Application.Implementations
 {
     public class CommentService : ICommentService
     {
@@ -58,9 +45,9 @@ namespace PeopleActzAndPostz.Application.Implementations
 
         }
 
-        public async Task<bool> UpdateCommentAsync(UpdateCommentRequest request, string id)
+        public async Task<bool> UpdateCommentAsync(UpdateCommentRequest request)
         {
-            var commentFromDb = await GetCommentDetail(id);
+            var commentFromDb = await GetCommentDetail(request.Id);
 
             var commentPayload = MapToCommentUpdateModel(request);
             if (commentPayload is null) throw new NotFoundException();
@@ -69,7 +56,7 @@ namespace PeopleActzAndPostz.Application.Implementations
             {
                 var commentUserPayload = await CurrentUser();
                 commentPayload.appUser = commentUserPayload;
-                _mapper.Map<UserDetailResponse>(commentPayload.appUser);
+                _mapper.Map(commentFromDb, commentPayload);
                 commentPayload.ModifiedAt = DateTime.UtcNow;
                 commentPayload.ModifiedBy = commentUserPayload.UserName;
                 commentPayload.Post = _mapper.Map<Post>(commentFromDb.Post);

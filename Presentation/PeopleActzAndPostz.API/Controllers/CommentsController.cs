@@ -1,8 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PeopleActzAndPostz.Application.Contracts;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.Comment;
-
-namespace PeopleActzAndPostz.API.Controllers
+﻿namespace PeopleActzAndPostz.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,9 +21,9 @@ namespace PeopleActzAndPostz.API.Controllers
         }
         [HttpPost("UpdateComment")]
         //[Authorize]
-        public async Task<ActionResult> UpdateComment([FromBody] UpdateCommentRequest request,string commentId)
+        public async Task<ActionResult> UpdateComment([FromBody] UpdateCommentRequest request)
         {
-            var comment = await _commentService.UpdateCommentAsync(request, commentId);
+            var comment = await _commentService.UpdateCommentAsync(request);
             return Ok(comment);
         }
         [HttpGet("GetCommentById")]

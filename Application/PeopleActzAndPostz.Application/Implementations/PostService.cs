@@ -1,16 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.AspNetCore.Identity;
-using PeopleActzAndPostz.Application.Contracts;
-using PeopleActzAndPostz.Application.UserClaimService;
-using PeopleActzAndPostz.Domain.Common.Exceptions;
-using PeopleActzAndPostz.Domain.Models.DbEntities;
-using PeopleActzAndPostz.Domain.Models.DbEntities.IdentityEntities;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.Post;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.AppUser;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.Post;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.UnitOfWorks;
-
-namespace PeopleActzAndPostz.Application.Implementations
+﻿namespace PeopleActzAndPostz.Application.Implementations
 {
     public class PostService : IPostService
     {
@@ -61,10 +49,10 @@ namespace PeopleActzAndPostz.Application.Implementations
 
         }
 
-        public async Task<bool> UpdatePostAsync(UpdatePostRequest request, string id)
+        public async Task<bool> UpdatePostAsync(UpdatePostRequest request)
         {
 
-            var postFromDb = await GetPostDetail(id);
+            var postFromDb = await GetPostDetail(request.Id);
             var postPayload = MapToDbPostUpdateModel(request);
             if (postFromDb is null) throw new NotFoundException();
 
@@ -72,7 +60,7 @@ namespace PeopleActzAndPostz.Application.Implementations
             {
                 var postUserPayload = await CurrentUser();
                 postPayload.AppUser = postUserPayload;
-                _mapper.Map<UserDetailResponse>(postPayload.AppUser);
+                _mapper.Map(postFromDb, postPayload);
                 postPayload.ModifiedAt = DateTime.UtcNow;
                 postPayload.ModifiedBy = postUserPayload.UserName;
                

@@ -1,16 +1,4 @@
-﻿using AutoMapper;
-using PeopleActzAndPostz.Application.Contracts;
-using PeopleActzAndPostz.Application.UserClaimService;
-using PeopleActzAndPostz.Domain.Common.Exceptions;
-using PeopleActzAndPostz.Domain.Models.DbEntities;
-using PeopleActzAndPostz.Domain.Models.DbEntities.IdentityEntities;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.SubComment;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.AppUser;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.Comment;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.SubComment;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.UnitOfWorks;
-
-namespace PeopleActzAndPostz.Application.Implementations
+﻿namespace PeopleActzAndPostz.Application.Implementations
 {
     public class SubCommentService : ISubCommentService
     {
@@ -58,11 +46,14 @@ namespace PeopleActzAndPostz.Application.Implementations
 
         }
 
-        public async Task<bool> UpdateSubCommentAsync(UpdateSubCommentRequest request, string id)
+        public async Task<bool> UpdateSubCommentAsync(UpdateSubCommentRequest request)
         {
 
             var subCommentPayload = MapToUpdateRequest(request);
-            var subCommentFromDb = await GetSubCommentDetail(id);
+            var subCommentFromDb = await GetSubCommentDetail(request.Id);
+
+            _mapper.Map(subCommentFromDb, subCommentPayload);
+
             if (subCommentFromDb is null) throw new NotFoundException();
             var subCommentUser = await CurrentUser();
 

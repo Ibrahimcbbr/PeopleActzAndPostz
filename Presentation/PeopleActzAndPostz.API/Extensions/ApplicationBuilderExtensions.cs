@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
-using PeopleActzAndPostz.API.Middlewares;
-
-namespace PeopleActzAndPostz.API.Extensions
+﻿namespace PeopleActzAndPostz.API.Extensions
 {
     public static class ApplicationBuilderExtensions
     {

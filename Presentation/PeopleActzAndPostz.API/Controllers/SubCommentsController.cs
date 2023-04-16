@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PeopleActzAndPostz.Application.Contracts;
-using PeopleActzAndPostz.Application.Implementations;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.Comment;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.SubComment;
-
-namespace PeopleActzAndPostz.API.Controllers
+﻿namespace PeopleActzAndPostz.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -26,9 +20,9 @@ namespace PeopleActzAndPostz.API.Controllers
         }
         [HttpPost("UpdateSubComment")]
         //[Authorize]
-        public async Task<ActionResult> UpdateSubComment([FromBody] UpdateSubCommentRequest request, string commentId)
+        public async Task<ActionResult> UpdateSubComment([FromBody] UpdateSubCommentRequest request)
         {
-            var subComment = await _subCommentService.UpdateSubCommentAsync(request, commentId);
+            var subComment = await _subCommentService.UpdateSubCommentAsync(request);
             return Ok(subComment);
         }
         [HttpGet("GetSubCommentById")]

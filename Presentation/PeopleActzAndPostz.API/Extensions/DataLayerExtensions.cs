@@ -1,8 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.DbContext;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.Repositories.Contracts;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.Repositories.Implementation;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.UnitOfWorks;
+﻿using PeopleActzAndPostz.Application.Common.Contracts.Email;
+using PeopleActzAndPostz.Infrastructure.EntityFramework.MailService;
 
 namespace PeopleActzAndPostz.API.Extensions
 {
@@ -18,6 +15,9 @@ namespace PeopleActzAndPostz.API.Extensions
 
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IUserRepository, UserRepository>();
+            var emailConfig = configuration.GetSection("Email").Get<EmailConfigurationSettings>();
+            services.AddSingleton(emailConfig);
+            services.AddScoped<IMailService, MailService>();
 
 
             return services;

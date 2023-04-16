@@ -7,7 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\Responses\**" />
+    <EmbeddedResource Remove="DTOs\Responses\**" />
+    <None Remove="DTOs\Responses\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\AppUsers\RequestDtos\" />
   </ItemGroup>
 
 </Project>

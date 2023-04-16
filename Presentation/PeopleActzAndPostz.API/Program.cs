@@ -1,10 +1,6 @@
-using Microsoft.AspNetCore.Diagnostics;
-using PeopleActzAndPostz.API.Extensions;
-using PeopleActzAndPostz.Application.JwtTokenHelper;
-using PeopleActzAndPostz.Domain.Common.AutoMapper.AutoMapperProfiles;
-using PeopleActzAndPostz.Domain.Common.Settings;
-using PeopleActzAndPostz.Infrastructure.EntityFramework.UnitOfWorks;
-using PostZUserZ.Application.Helpers.HelperServices.JwtTokenHelper;
+
+using PeopleActzAndPostz.Application.Common.Contracts.Email;
+using PeopleActzAndPostz.Infrastructure.EntityFramework.MailService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,10 +13,10 @@ builder.Services.ConfigureCors();
 
 
 
-builder.Services.ConfigureIdentity();
-builder.Services.AddAutoMapper(typeof(Maps).Assembly);
+builder.Services.ConfigureIdentityOptions();
 builder.Services.LoadApplicationLayerExtensions(builder.Configuration);
 builder.Services.LoadDataLayerExtensions(builder.Configuration);
+builder.Services.LoadIdentityServiceExtensions(builder.Configuration);
 var settings = new JwtSettings();
 builder.Configuration.GetSection("Jwt").Bind(settings);
 

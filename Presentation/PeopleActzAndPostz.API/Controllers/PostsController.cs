@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using PeopleActzAndPostz.Application.Contracts;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.Post;
-
-
-namespace PeopleActzAndPostz.API.Controllers
+﻿namespace PeopleActzAndPostz.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,9 +21,9 @@ namespace PeopleActzAndPostz.API.Controllers
         }
         [HttpPost("UpdatePost")]
         //[Authorize]
-        public async Task<ActionResult> UpdatePost([FromBody] UpdatePostRequest request,string id)
+        public async Task<ActionResult> UpdatePost([FromBody] UpdatePostRequest request)
         {
-            var post = await _postService.UpdatePostAsync(request, id);
+            var post = await _postService.UpdatePostAsync(request);
             return Ok(post);
         }
         [HttpGet("GetPostById")]

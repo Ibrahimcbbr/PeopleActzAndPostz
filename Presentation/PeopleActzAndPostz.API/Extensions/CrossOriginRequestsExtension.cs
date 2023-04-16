@@ -1,8 +1,4 @@
-﻿
-
-using PeopleActzAndPostz.Domain.Common.Settings;
-
-namespace PeopleActzAndPostz.API.Extensions
+﻿namespace PeopleActzAndPostz.API.Extensions
 {
     public static class CrossOriginRequestsExtension
     {
@@ -12,7 +8,12 @@ namespace PeopleActzAndPostz.API.Extensions
             {
                 options.AddDefaultPolicy(policy =>
                 {
-                    policy.WithOrigins(_JwtSettings.JwtAudiences.ToArray()).AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod().Build();
+                    policy.WithOrigins(_JwtSettings.JwtAudiences
+                        .ToArray())
+                        .AllowAnyOrigin()
+                        .AllowAnyHeader()
+                        .AllowAnyMethod()
+                        .Build();
                 });
             });
         }

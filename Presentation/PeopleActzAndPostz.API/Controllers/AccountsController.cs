@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using PeopleActzAndPostz.Application.Contracts;
-using PeopleActzAndPostz.Domain.Models.DTOs.Requests.AppUser.Account;
-using PeopleActzAndPostz.Domain.Models.DTOs.Responses.AppUser.Account;
-
-namespace PeopleActzAndPostz.API.Controllers
+﻿namespace PeopleActzAndPostz.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

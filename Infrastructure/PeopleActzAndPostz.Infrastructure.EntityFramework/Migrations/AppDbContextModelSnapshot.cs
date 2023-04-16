@@ -95,21 +95,21 @@ namespace PeopleActzAndPostz.Infrastructure.EntityFramework.Migrations
                         new
                         {
                             Id = "EE72CC84-0CFB-4BA5-8A51-55C3C85D23F2",
-                            ConcurrencyStamp = "7c2162bf-f515-48ae-b5be-82b2e56c623b",
+                            ConcurrencyStamp = "307d7c0d-26c1-4c3b-a424-5b8037c22843",
                             Name = "SuperAdmin",
                             NormalizedName = "SUPERADMIN"
                         },
                         new
                         {
                             Id = "E4E7B010-DEB1-4BC9-BB59-572332E969D7",
-                            ConcurrencyStamp = "b878f983-6295-4427-8e17-fe3aba3b7317",
+                            ConcurrencyStamp = "038ffb28-94d6-4ec8-b808-f8e6a7ef90a6",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "3DF53752-2022-47E8-898E-0CEA6206A47E",
-                            ConcurrencyStamp = "118cb737-a354-4f83-a08f-b9b778b15b36",
+                            ConcurrencyStamp = "21496fdb-d06f-4d1e-bdfb-378f926c40ca",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -215,17 +215,17 @@ namespace PeopleActzAndPostz.Infrastructure.EntityFramework.Migrations
                         {
                             Id = "b6eeeb2e-9361-44bf-b189-3ed9bb58e495",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "01ae3083-b942-4798-93b6-40b84ced8377",
+                            ConcurrencyStamp = "01d33cb9-a888-4902-afb0-c3bd27feb69b",
                             Email = "superAdmin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "SUPERADMIN@GMAIL.COM",
                             NormalizedUserName = "SUPERADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEGZ9L+Ig217IJ0FviTF9RBIrHHegxPXcZRRN1QRCK3uR0eMVU0SDi3TRYILUMO6F/g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEA19+GyHStiZQWRTiko7pUm3D60iL1YuiYFEakqfUlhSn9MofAdG3eBbiS70EXMZbA==",
                             PhoneNumber = "+90535999999",
                             PhoneNumberConfirmed = true,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "98b84173-2679-48e0-bef9-eff6769c2930",
+                            SecurityStamp = "b725fea7-c5fe-4252-acba-8a54e2fccc92",
                             TwoFactorEnabled = false,
                             UserName = "superAdmin@gmail.com"
                         },
@@ -233,17 +233,17 @@ namespace PeopleActzAndPostz.Infrastructure.EntityFramework.Migrations
                         {
                             Id = "b9c6085d-d150-43e0-b2e2-1b7d05477d1b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8a43b87b-52da-4ba4-aedc-272a542057f2",
+                            ConcurrencyStamp = "2214bdd3-6a5c-4811-a17f-52b81405bfa9",
                             Email = "Admin@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@GMAIL.COM",
                             NormalizedUserName = "ADMIN@GMAIL.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENlEkBnhGJIeshAv1zfaYBk6MepC4VuvN8NCgFB57cDk5Q4ISRflB5nCL+Qjt1dMig==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEJePri7d/PZERPZL/Quq6m/e9QEf2rTQQXs6PfuDm/eK1gusyYaYewfa0Qd/qnVk9Q==",
                             PhoneNumber = "+90535999999",
                             PhoneNumberConfirmed = true,
                             RefreshTokenExpiryTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            SecurityStamp = "4fae3fd6-9ef8-42c8-aa6d-3d94f2105083",
+                            SecurityStamp = "47b11e09-642c-441a-ac34-1fe253299977",
                             TwoFactorEnabled = false,
                             UserName = "Admin@gmail.com"
                         });
@@ -387,6 +387,7 @@ namespace PeopleActzAndPostz.Infrastructure.EntityFramework.Migrations
             modelBuilder.Entity("PeopleActzAndPostz.Domain.Models.DbEntities.SubComment", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CommentId")
